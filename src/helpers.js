@@ -10,8 +10,14 @@ const startGame = () => {
     console.log('The game continues until the word is fully guessed.');
     console.log('Lets start the game');
 }
+const getArray2 = (UserArray) =>{
+    for(let j = 0; j < UserArray.length; j++){
+        UserArray[j] = '..'
+    }
+    return UserArray;
+}
 const getRandomElement = (answers) =>{
     const getRandomElement=(min,max,arr)=>arr[Math.floor(Math.random()*(max-min+1))+min]
     return getRandomElement(0,answers.length-1,answers);
 };
-export { getRandomElement,startGame };
+export { getRandomElement,startGame,getArray2, };

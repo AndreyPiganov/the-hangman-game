@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { getRandomElement,startGame } from "./helpers.js";
+import { getRandomElement,startGame,getArray2, } from "./helpers.js";
 let words = [
     "mister",
     "tank",
@@ -52,22 +52,27 @@ let words = [
 startGame();
 const randomElement = getRandomElement(words);
 const charRandomElement = randomElement.split('');
-let UserArray = [];
+let UserArray = [...charRandomElement];
+let UserArray2 = getArray2(UserArray);
+console.log(UserArray2);
 const getArray = (UserArray,charRandomElement) => {
     let UserAnswer = readlineSync.question('Which letter is present in the word?\n');
-    if(UserArray.length === charRandomElement.length){
+    if(UserArray === charRandomElement){
         return UserArray.join('');
     }
     else{
         for(let i = 0; i < charRandomElement.length; i++) {
+            for(let j = 0; j < UserArray.length; j++){
             if(charRandomElement[i] === UserAnswer){
-                UserArray.push(UserAnswer);
-                UserArray.sort((a, b) => charRandomElement.indexOf(a) - charRandomElement.indexOf(b));
+                let CorrectChar = charRandomElement.indexOf(UserAnswer);
+                console.log(CorrectChar);
+                UserArray.splice(CorrectChar,1,UserAnswer);
             }
-        }
+    }
+}
         console.log(UserArray.join('|'));
         console.log(charRandomElement);
         return getArray(UserArray,charRandomElement); 
     }
 }
-console.log(getArray(UserArray,charRandomElement));
+console.log(getArray(UserArray2,charRandomElement));
