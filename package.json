@@ -4,6 +4,9 @@
   "description": "",
   "type": "module",
   "main": "index.js",
+  "bin":{
+    "hangman": "bin/hangman.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
